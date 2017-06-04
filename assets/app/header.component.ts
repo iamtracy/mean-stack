@@ -11,6 +11,7 @@ import { Component } from '@angular/core';
                 </ul>
             </nav>
         </header>
+        <hr>
     `
 })
 

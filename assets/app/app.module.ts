@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from "./app.component";
 import { AuthenticationComponent } from './auth/authentication.component';
+import { SignupComponent } from './auth/signup.compenent';
+import { SigninComponent } from './auth/signin.component';
+import { LogoutComponent } from './auth/logout.compoenent';
 import { routing } from './app.routing';
 import { HeaderComponent } from './header.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -19,7 +22,10 @@ import { MessageInputComponent } from './messages/message-input.component';
         MessageInputComponent,
         MessagesComponent,
         AuthenticationComponent,
-        HeaderComponent
+        HeaderComponent,
+        LogoutComponent,
+        SigninComponent,
+        SignupComponent
     ],
     imports: [BrowserModule, FormsModule, routing],
     bootstrap: [AppComponent]
