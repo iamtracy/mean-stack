@@ -16,6 +16,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessageComponent } from './messages/message.component';
 import { MessageListComponent } from './messages/message-list.component';
 import { MessageInputComponent } from './messages/message-input.component';
+import { ErrorComponent } from './errors/error.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { MessageInputComponent } from './messages/message-input.component';
         HeaderComponent,
         LogoutComponent,
         SigninComponent,
-        SignupComponent
+        SignupComponent,
+        ErrorComponent
     ],
     imports: [
         BrowserModule, 
