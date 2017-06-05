@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { MessageService } from './message.service';
 import { Message } from './message.model';
 
@@ -36,4 +36,10 @@ export class MessageComponent {
                 result => console.log(result)
             );
     }
+
+    belongsToUser() {
+        console.log(localStorage.getItem('userId') == this.message.userId);
+        return localStorage.getItem('userId') == this.message.userId;
+    }
+
 }
