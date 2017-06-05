@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthService } from './auth/auth.service';
+import { ErrorService } from './errors/error.service';
 
 import { AppComponent } from "./app.component";
 import { AuthenticationComponent } from './auth/authentication.component';
@@ -39,7 +40,7 @@ import { ErrorComponent } from './errors/error.component';
         ReactiveFormsModule,
         HttpModule
     ],
-    providers: [AuthService],
+    providers: [AuthService, ErrorService],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     bootstrap: [AppComponent]
 })
