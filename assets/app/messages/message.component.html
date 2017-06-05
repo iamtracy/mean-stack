@@ -1,10 +1,10 @@
 <article class="panel panel-default">
   <div class="panel-body">
-    {{messages.content}}
+    {{messages?.obj.content}}
   </div>
   <footer class="panel-footer">
     <div class="author">
-      {{messages.username}}
+      {{messages?.obj.username}}
     </div>
     <div class="config">
       <a (click)="onEdit()">Edit</a>

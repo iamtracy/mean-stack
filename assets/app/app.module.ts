@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from "./app.component";
@@ -27,7 +28,14 @@ import { MessageInputComponent } from './messages/message-input.component';
         SigninComponent,
         SignupComponent
     ],
-    imports: [BrowserModule, FormsModule, routing, ReactiveFormsModule],
+    imports: [
+        BrowserModule, 
+        FormsModule, 
+        routing, 
+        ReactiveFormsModule,
+        HttpModule
+    ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

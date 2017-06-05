@@ -7,8 +7,9 @@ router.post('/', function(req, res, next) {
   var message = new Message({
     content: req.body.content
   });
-  message.save(function(e) {
+  message.save(function(err, result) {
     if (err) {
+      console.log('server error');
       return res.status(500).json({
         title: 'An error occured',
         error: err
@@ -16,7 +17,7 @@ router.post('/', function(req, res, next) {
     }
     res.status(201).json({
       message: 'Saved message',
-      obj: results
+      obj: result
     });
   });
 });
