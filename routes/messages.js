@@ -6,7 +6,7 @@ var Message = require('../models/message');
 router.get('/', function(req, res, next) {
   Message.find()
     .exec(function(err, messages) {
-      if (irr) {
+      if (err) {
         return res.status(500).json({
           title: 'An error occured',
           error: err

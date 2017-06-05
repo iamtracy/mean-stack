@@ -33,11 +33,12 @@ export class MessageService {
                 for(let message of messages) {
                     transformedMessages.push(new Message(
                         message.content,
-                        message.id,
                         'Dummy',
+                        message.id,
                         null
                     ));
                 }
+                this.messages = transformedMessages;
                 return transformedMessages;
             })
             .catch((error: Response) => Observable.throw(error))

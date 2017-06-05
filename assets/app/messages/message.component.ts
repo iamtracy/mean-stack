@@ -22,12 +22,11 @@ import { Message } from './message.model';
 })
 export class MessageComponent {
     @Input() message: Message[];
-    @Output() editClicked = new EventEmitter<string>();
 
     constructor(private messageService: MessageService) {}
 
     onEdit() {
-        this.editClicked.emit('A new value');
+        
     }
 
     onDelete(index) {
