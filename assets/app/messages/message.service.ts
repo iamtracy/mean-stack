@@ -13,16 +13,22 @@ export class MessageService {
     constructor(private http: Http) {}
 
     addMessage(message: Message) {
-        this.messages.push(message);
         const body = JSON.stringify(message);
         const headers = new Headers({'Content-Type': 'application/json'});
         return this.http
             .post('/message', body, {headers: headers})
             .map((response: Response) => {
-                console.log('success', response.json())
-                response.json()
+                const result = response.json();
+                const message = new Message(
+                    result.obj.content,
+                    'Dummy',
+                    result.obj._id,
+                    null
+                );
+                this.messages.push(message);
+                return message;
             })
-            .catch((error: Response) => Observable.throw(error))
+            .catch((error: Response) => Observable.throw(error));
     }
 
     getMessages() {
@@ -35,7 +41,7 @@ export class MessageService {
                     transformedMessages.push(new Message(
                         message.content,
                         'Dummy',
-                        message.id,
+                        message._id,
                         null
                     ));
                 }
@@ -51,10 +57,22 @@ export class MessageService {
 
     updateMessage(message: Message) {
         
+        const body = JSON.stringify(message);
+        const headers = new Headers({'Content-Type': 'application/json'});
+        return this.http
+            .patch('/message/' + message.messageId, body, {headers: headers})
+            .map((response: Response) => response.json())
+            .catch((error: Response) => Observable.throw(error))
     }
 
-    deleteMessage(message) {
-        this.messages.splice(this.messages.indexOf(message, 1));
+    deleteMessage(message: Message) {
+        this.messages.splice(this.messages.indexOf(message), 1);
+        const body = JSON.stringify(message);
+        const headers = new Headers({'Content-Type': 'application/json'});
+        return this.http
+            .delete('/message/' + message.messageId)
+            .map((response: Response) => response.json())
+            .catch((error: Response) => Observable.throw(error))
     }
 
 }
