@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 
 var appRoutes = require('./routes/app');
 var messageRoutes = require('./routes/messages');
-var messageRoutes = require('./routes/user');
+var userRoutes = require('./routes/user');
 
 var app = express();
 mongoose.connect('localhost:27017/node-angular');

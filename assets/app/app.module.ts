@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AuthService } from './auth/auth.service';
+
 import { AppComponent } from "./app.component";
 import { AuthenticationComponent } from './auth/authentication.component';
 import { SignupComponent } from './auth/signup.compenent';
@@ -35,6 +37,7 @@ import { MessageInputComponent } from './messages/message-input.component';
         ReactiveFormsModule,
         HttpModule
     ],
+    providers: [AuthService],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     bootstrap: [AppComponent]
 })

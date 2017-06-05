@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
+import { AuthService } from './auth.service';
+import { User } from './user.model';
+
 @Component({
     selector: 'app-signup',
     templateUrl: './signup.component.html'
@@ -9,8 +12,22 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class SignupComponent implements OnInit {
     signupForm: FormGroup;
 
+    constructor(private authService: AuthService) {}
+
     onSubmit() {
-        console.log(this.signupForm)
+        const user = new User(
+            this.signupForm.value.email,
+            this.signupForm.value.password,
+            this.signupForm.value.firstName,
+            this.signupForm.value.lastName
+        );
+        this.authService
+            .signup(user)
+            .subscribe(
+                data => console.log(data),
+                err => console.log(err)
+            );
+        this.signupForm.reset();
     }
 
     ngOnInit() {
@@ -19,7 +36,7 @@ export class SignupComponent implements OnInit {
             lastName: new FormControl(null, Validators.required),
             email: new FormControl(null, [
                 Validators.required,
-                Validators.pattern('/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/')
+                Validators.pattern(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
             ]),
             password: new FormControl(null, Validators.required)
         })

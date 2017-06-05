@@ -8,7 +8,7 @@ router.post('/', function(req, res, next) {
   var user = new User({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    password: bcrypt.hash(req.body.password, 10),
+    password: bcrypt.hashSync(req.body.password, 10),
     email: req.body.email,
     // messages: [{ type: Schema.Types.ObjectId, ref: 'Message' }]
   });
