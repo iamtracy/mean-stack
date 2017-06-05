@@ -21,12 +21,12 @@ import { Message } from './message.model';
     `]
 })
 export class MessageComponent {
-    @Input() message: Message[];
+    @Input() message: Message;
 
     constructor(private messageService: MessageService) {}
 
     onEdit() {
-        
+        this.messageService.editMessage(this.message);
     }
 
     onDelete(index) {
