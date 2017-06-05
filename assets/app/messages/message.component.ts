@@ -21,16 +21,19 @@ import { Message } from './message.model';
     `]
 })
 export class MessageComponent {
-    @Input() message: Message[];
-    @Output() editClicked = new EventEmitter<string>();
+    @Input() message: Message;
 
     constructor(private messageService: MessageService) {}
 
     onEdit() {
-        this.editClicked.emit('A new value');
+        this.messageService.editMessage(this.message);
     }
 
     onDelete(index) {
-        this.messageService.deleteMessage(this.message);
+        this.messageService
+            .deleteMessage(this.message)
+            .subscribe(
+                result => console.log(result)
+            );
     }
 }
