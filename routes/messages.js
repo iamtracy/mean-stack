@@ -3,13 +3,28 @@ var router = express.Router();
 
 var Message = require('../models/message');
 
+router.get('/', function(req, res, next) {
+  Message.find()
+    .exec(function(err, messages) {
+      if (irr) {
+        return res.status(500).json({
+          title: 'An error occured',
+          error: err
+        });
+      }
+      res.status(200).json({
+        message: 'Get message successful',
+        obj: messages
+      });
+    });
+});
+
 router.post('/', function(req, res, next) {
   var message = new Message({
     content: req.body.content
   });
   message.save(function(err, result) {
     if (err) {
-      console.log('server error');
       return res.status(500).json({
         title: 'An error occured',
         error: err
