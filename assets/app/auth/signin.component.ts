@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-signin',
-    templateUrl: './signup.component.html'
+    templateUrl: './signin.component.html'
 })
 
 export class SigninComponent {
-    onLogout() {
-        
-    }
+
 }
