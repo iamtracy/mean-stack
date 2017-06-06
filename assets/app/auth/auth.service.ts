@@ -9,7 +9,7 @@ import { User } from './user.model';
 @Injectable()
 export class AuthService {
 
-    constructor(private http: Http, private errorService: ErrorService){}
+    constructor(private http: Http, private errorService: ErrorService) {}
 
     signup(user: User) {
         const body = JSON.stringify(user);

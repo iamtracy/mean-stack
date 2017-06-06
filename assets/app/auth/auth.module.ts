@@ -21,6 +21,4 @@ import { LogoutComponent } from './logout.compoenent';
     ]
 })
 
-export class AuthModule {
-
-}
+export class AuthModule {}

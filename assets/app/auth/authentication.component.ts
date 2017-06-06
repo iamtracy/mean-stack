@@ -20,6 +20,7 @@ import { Component } from '@angular/core';
 })
 
 export class AuthenticationComponent {
+    
     constructor(private authService: AuthService) {}
 
     isLoggedIn() {

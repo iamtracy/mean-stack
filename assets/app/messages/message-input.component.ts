@@ -15,7 +15,10 @@ export class MessageInputComponent implements OnInit{
 
     ngOnInit() {
         this.messageService.messageIsEdit.subscribe(
-            (message: Message) => this.message = message
+            (message: Message) => {
+                console.log(message);
+                return this.message = message
+            }
         );
     }
     
@@ -30,6 +33,7 @@ export class MessageInputComponent implements OnInit{
             this.message = null;
         } else {
             const message = new Message(form.value.content, form.value.username);
+            console.log(message);
             this.messageService
                 .addMessage(message)
                 .subscribe(

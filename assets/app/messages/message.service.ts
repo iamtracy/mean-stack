@@ -23,10 +23,10 @@ export class MessageService {
                 const result = response.json();
                 const message = new Message(
                     result.obj.content,
-                    result.obj.firstName,
+                    result.obj.user.firstName,
                     result.obj._id,
                     result.obj.user._id
-                );
+                );             
                 this.messages.push(message);
                 return message;
             })

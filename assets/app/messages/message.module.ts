@@ -25,6 +25,4 @@ import { MessageInputComponent } from './message-input.component';
     ]
 })
 
-export class MessageModule {
-
-}
+export class MessageModule {}
