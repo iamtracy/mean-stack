@@ -14,7 +14,7 @@ import { User } from './user.model';
 export class SigninComponent implements OnInit {
     signinForm: FormGroup;
 
-    constructor(private authService: AuthService: private router: Router) {}
+    constructor(private authService: AuthService, private router: Router) {}
 
     onSubmit() {
         const user = new User(this.signinForm.value.email, this.signinForm.value.password);
