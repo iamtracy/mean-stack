@@ -3,6 +3,7 @@ import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Rx';
 
+import { ErrorService } from './../errors/error.service';
 import { Message } from './message.model';
 
 @Injectable()
@@ -10,25 +11,29 @@ export class MessageService {
     private messages: Message[] = [];
     messageIsEdit = new EventEmitter<Message>();
 
-    constructor(private http: Http) {}
+    constructor(private http: Http, private errorService: ErrorService) {}
 
     addMessage(message: Message) {
         const body = JSON.stringify(message);
         const headers = new Headers({'Content-Type': 'application/json'});
+        const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
         return this.http
-            .post('/message', body, {headers: headers})
+            .post('/message' + token, body, {headers: headers})
             .map((response: Response) => {
                 const result = response.json();
                 const message = new Message(
                     result.obj.content,
-                    'Dummy',
+                    result.obj.firstName,
                     result.obj._id,
-                    null
+                    result.obj.user._id
                 );
                 this.messages.push(message);
                 return message;
             })
-            .catch((error: Response) => Observable.throw(error));
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error)
+            });
     }
 
     getMessages() {
@@ -40,15 +45,18 @@ export class MessageService {
                 for(let message of messages) {
                     transformedMessages.push(new Message(
                         message.content,
-                        'Dummy',
+                        message.user.firstName,
                         message._id,
-                        null
+                        message.user._id
                     ));
                 }
                 this.messages = transformedMessages;
                 return transformedMessages;
             })
-            .catch((error: Response) => Observable.throw(error))
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error)
+            });
     }
 
     editMessage(message: Message) {
@@ -56,23 +64,30 @@ export class MessageService {
     }
 
     updateMessage(message: Message) {
-        
         const body = JSON.stringify(message);
         const headers = new Headers({'Content-Type': 'application/json'});
+        const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
         return this.http
-            .patch('/message/' + message.messageId, body, {headers: headers})
+            .patch('/message/' + message.messageId + token, body, {headers: headers})
             .map((response: Response) => response.json())
-            .catch((error: Response) => Observable.throw(error))
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error)
+            });
     }
 
     deleteMessage(message: Message) {
         this.messages.splice(this.messages.indexOf(message), 1);
         const body = JSON.stringify(message);
         const headers = new Headers({'Content-Type': 'application/json'});
+        const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
         return this.http
-            .delete('/message/' + message.messageId)
+            .delete('/message/' + message.messageId + token)
             .map((response: Response) => response.json())
-            .catch((error: Response) => Observable.throw(error))
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error)
+            });
     }
 
 }
