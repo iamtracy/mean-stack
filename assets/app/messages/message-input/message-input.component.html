@@ -1,11 +1,13 @@
-<div class="my-3">
-  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-    <div class="form-group">
-      <md-input-container class="example-full-width">
-        <input mdInput placeholder="Post a Message" name="content" id="content" class="form-control" [ngModel]="message?.content" required>
-      </md-input-container>
-    </div>
-    <button type="submit" md-raised-button [disabled]="!f.valid">Submit</button>
-    <button type="submit" md-raised-button [disabled]="!f.valid" (click)="onClear(f)">Clear</button>
-  </form>
+<div class="row my-3">
+  <div class="col">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="form-group">
+        <md-input-container class="mt-input">
+          <input mdInput placeholder="Post a Message" name="content" id="content" class="form-control" [ngModel]="message?.content" required>
+        </md-input-container>
+      </div>
+      <button type="submit" md-raised-button [disabled]="!f.valid">Submit</button>
+      <button type="submit" md-raised-button [disabled]="!f.valid" (click)="onClear(f)">Clear</button>
+    </form>
+  </div>
 </div>

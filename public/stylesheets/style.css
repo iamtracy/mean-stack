@@ -17,6 +17,6 @@ a.danger {
 .spacing {
   margin-bottom: 20px;
 }
-input.ng-invalid.ng-touched {
-  border: 1px solid tomato;
+.mt-input {
+  width: 100%;
 }
