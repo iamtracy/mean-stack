@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 
 import { authRouting } from './auth.routing';
 
-import { MdInputModule, MdButtonModule, MdMenuModule, MdTabsModule } from '@angular/material';
+
+import { MdCardModule, MdToolbarModule, MdInputModule, MdButtonModule, MdMenuModule ,MdTabsModule } from '@angular/material';
 
 import { SignupComponent } from './signup.compenent';
 import { SigninComponent } from './signin.component';

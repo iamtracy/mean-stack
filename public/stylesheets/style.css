@@ -21,3 +21,9 @@ a.danger {
 .mt-input {
   width: 100%;
 }
+.navbar {
+  padding: .5rem 0;
+}
+button:disabled:hover {
+  cursor: not-allowed;
+}

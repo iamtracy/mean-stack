@@ -1,3 +1,4 @@
+import { Router } from '@Angular/router';
 import { ErrorService } from './error.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -22,10 +23,11 @@ export class ErrorComponent implements OnInit{
     error: Error;
     display = 'none';
 
-    constructor(private errorService: ErrorService) {}
+    constructor(private errorService: ErrorService, private router: Router) {}
 
     onErrorHandled() {
         this.display = 'none';
+        this.router.navigateByUrl('/auth/signin');
     }
 
     ngOnInit() {
