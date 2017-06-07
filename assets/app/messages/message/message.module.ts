@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdCardModule } from '@angular/material';
 import { MdButtonModule } from '@angular/material';
 import { MdTabsModule } from '@angular/material';
+import { MdInputModule } from '@angular/material';
 
 import { MessagesComponent } from '../messages.component';
 import { MessageComponent } from './message.component';
@@ -27,7 +28,8 @@ import { MessageInputComponent } from '../message-input/message-input.component'
         BrowserAnimationsModule,
         MdCardModule,
         MdButtonModule,
-        MdTabsModule
+        MdTabsModule,
+        MdInputModule
     ],
     providers: [
         MessageService
