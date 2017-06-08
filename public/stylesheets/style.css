@@ -26,15 +26,14 @@ a.danger {
 }
 .nav-item.active .nav-link {
   color: #9a9a9a;
+  background: #e4e4e4;
+  border-radius: 3px;
 }
 .nav-link {
   color: #333;
 }
 .nav-link:hover {
   color: #777676;
-}
-.nav-link:first-child {
-  padding-left: 0
 }
 button:hover {
   cursor: pointer;
