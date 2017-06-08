@@ -24,6 +24,15 @@ a.danger {
 .navbar {
   padding: .5rem 0;
 }
+.nav-item.active .nav-link {
+  color: #9a9a9a;
+}
+.nav-link {
+  color: #333;
+}
+.nav-link:hover {
+  color: #777676;
+}
 .nav-link:first-child {
   padding-left: 0
 }

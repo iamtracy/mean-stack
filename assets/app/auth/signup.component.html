@@ -9,7 +9,7 @@
     <input mdInput placeholder="Email" id="email" formControlName="email">
   </md-input-container>
   <md-input-container class="mt-input">
-    <input mdInput placeholder="Password" id="password" formControlName="password">
+    <input mdInput placeholder="Password > 8 charactera, one lowercase, one uppercase, one number" id="password" formControlName="password">
   </md-input-container>
   <button md-raised-button type="submit" [disabled]="!signupForm.valid">Sign Up</button>
 </form>

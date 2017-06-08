@@ -39,7 +39,7 @@ router.post('/', function(req, res, next) {
   User.findById(decoded.user._id, function(err, user) {
     if (err) {
       return res.status(500).json({
-        title: 'An error occured',
+        title: 'Fields are invalid',
         error: err
       });
     }

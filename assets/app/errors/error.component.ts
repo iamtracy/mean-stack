@@ -28,7 +28,6 @@ export class ErrorComponent implements OnInit{
 
     onErrorHandled() {
         this.display = 'none';
-        this.router.navigateByUrl('/auth/signin');
     }
 
     ngOnInit() {
@@ -38,9 +37,6 @@ export class ErrorComponent implements OnInit{
                 (error: Error) => {
                     this.error = error;
                     this.display = 'block';
-                    if(this.error.title == "Not Authenticated") {
-                        this.buttonText = 'Login';
-                    }
                 }
             );
     }
