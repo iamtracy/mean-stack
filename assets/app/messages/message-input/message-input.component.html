@@ -2,7 +2,7 @@
   <div class="col">
     <form (ngSubmit)="onSubmit(f)" #f="ngForm" autocomplete="off">
       <md-input-container class="mt-input">
-        <input mdInput placeholder="Post a Message" name="content" id="content" class="form-control" [ngModel]="message?.content" required>
+        <textarea mdInput placeholder="Post a Message" rows="4" name="content" id="content" class="form-control" [ngModel]="message?.content" required></textarea>
       </md-input-container>
       <button type="submit" md-raised-button [disabled]="!f.valid">Submit</button>
       <button md-raised-button [disabled]="!f.valid" (click)="onClear(f)">Clear</button>
