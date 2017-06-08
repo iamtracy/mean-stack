@@ -1,20 +1,19 @@
-<md-card class="row">
+<div class="row">
   <div class="col">
-    <md-card-content>
-      <p>{{message.content}}</p>
-      <md-card-subtitle>{{message.username}}</md-card-subtitle>
-    </md-card-content>
+    <md-card>
+      <md-card-content>
+        <p>{{message.content}}</p>
+        <md-card-subtitle>{{message.username}}</md-card-subtitle>
+      </md-card-content>
+      <div *ngIf="belongsToUser()">
+        <md-card-actions>
+          <button md-button (click)="onEdit()">Edit</button>
+          <button md-button (click)="onDelete()">Delete</button>
+        </md-card-actions>
+      </div>
+    </md-card>
   </div>
-  <div class="col justify-content-between">
-    <div *ngIf="belongsToUser()">
-      <md-card-actions>
-        <button md-button (click)="onEdit()">Edit</button>
-        <button md-button (click)="onDelete()">Delete</button>
-      </md-card-actions>
-    </div>
-  </div>
-</md-card>
-
+</div>
 <!--<md-card-header>
     <md-card-title>Shiba Inu</md-card-title>
   </md-card-header>-->
