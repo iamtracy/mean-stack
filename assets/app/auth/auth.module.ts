@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
 
 import { authRouting } from './auth.routing';
 
@@ -24,7 +26,8 @@ import { LogoutComponent } from './logout.compoenent';
         MdInputModule,
         MdButtonModule,
         MdMenuModule,
-        MdTabsModule
+        MdTabsModule,
+        RouterModule
     ]
 })
 

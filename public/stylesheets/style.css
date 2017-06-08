@@ -15,6 +15,13 @@ a:active {
 a.danger {
   color: tomato;
 }
+.mat-input-invalid .mat-input-placeholder,
+.mat-input-invalid .mat-placeholder-required {
+  color: tomato;
+}
+.mat-input-invalid .mat-input-ripple {
+  background-color: tomato;
+}
 .spacing {
   margin-bottom: 20px;
 }

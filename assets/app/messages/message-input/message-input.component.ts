@@ -9,6 +9,7 @@ import { Message } from '../message/message.model';
     styles: [`
         .mat-input-element {
             font-size: 1.4rem;
+            padding: 1.2rem;
         }
     `]
 })

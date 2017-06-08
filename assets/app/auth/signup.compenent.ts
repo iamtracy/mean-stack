@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@Angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { AuthService } from './auth.service';
@@ -12,7 +13,7 @@ import { User } from './user.model';
 export class SignupComponent implements OnInit {
     signupForm: FormGroup;
 
-    constructor(private authService: AuthService) {}
+    constructor(private authService: AuthService, private router: Router) {}
 
     onSubmit() {
         const user = new User(
@@ -21,13 +22,18 @@ export class SignupComponent implements OnInit {
             this.signupForm.value.firstName,
             this.signupForm.value.lastName
         );
+        this.signupForm.reset();
         this.authService
             .signup(user)
             .subscribe(
-                data => console.log(data),
+                data => {
+                    console.log(data);
+                    if(data.message === 'User created') {
+                        this.router.navigateByUrl('/auth/signin');
+                    }
+                },
                 err => console.log(err)
             );
-        this.signupForm.reset();
     }
 
     ngOnInit() {
