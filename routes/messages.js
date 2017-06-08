@@ -27,7 +27,7 @@ router.use('/', function(req, res, next) {
     if (err) {
       return res.status(401).json({
         title: 'Not Authenticated',
-        error: err
+        error: { message: 'You must be logged in before posting a message' }
       });
     }
     next();
@@ -36,9 +36,7 @@ router.use('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   var decoded = jwt.decode(req.query.token);
-  console.log(decoded);
   User.findById(decoded.user._id, function(err, user) {
-    console.log(user)
     if (err) {
       return res.status(500).json({
         title: 'An error occured',
@@ -77,7 +75,7 @@ router.patch('/:id', function(req, res, next) {
     }
     if (!message) {
       return res.status(500).json({
-        title: 'no message found',
+        title: 'No Message Found',
         error: { message: 'Message not found' }
       });
     }

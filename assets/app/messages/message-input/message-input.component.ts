@@ -16,7 +16,6 @@ export class MessageInputComponent implements OnInit{
     ngOnInit() {
         this.messageService.messageIsEdit.subscribe(
             (message: Message) => {
-                console.log(message);
                 return this.message = message
             }
         );

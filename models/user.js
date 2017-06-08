@@ -12,4 +12,5 @@ var schema = new Schema({
 
 schema.plugin(mongooseUniqueValidator);
 
+//User is the collection name => users
 module.exports = mongoose.model('User', schema);

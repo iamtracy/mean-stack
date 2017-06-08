@@ -22,6 +22,7 @@ import { Error } from './error.model';
 export class ErrorComponent implements OnInit{ 
     error: Error;
     display = 'none';
+    buttonText = 'Close';
 
     constructor(private errorService: ErrorService, private router: Router) {}
 
@@ -37,6 +38,9 @@ export class ErrorComponent implements OnInit{
                 (error: Error) => {
                     this.error = error;
                     this.display = 'block';
+                    if(this.error.title == "Not Authenticated") {
+                        this.buttonText = 'Login';
+                    }
                 }
             );
     }
