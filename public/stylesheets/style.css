@@ -24,6 +24,13 @@ a.danger {
 .navbar {
   padding: .5rem 0;
 }
+.nav-link:first-child {
+  padding-left: 0
+}
 button:disabled:hover {
   cursor: not-allowed;
+}
+.mat-input-element {
+  font-size: 1.5rem;
+  padding: 0 0.2rem;
 }
